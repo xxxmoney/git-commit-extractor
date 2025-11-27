@@ -1,6 +1,18 @@
-﻿from src.commit_extractor import get_commits
+﻿import json
+from pathlib import Path
+from src.commit_extractor import get_commits
+import src.constants as constants
 
 if __name__ == '__main__':
-    result = get_commits(r"C:\Users\jakub.hana\Source\Repos\Newton.N2",  user_names=["Jakub Hana, Jakub Hána, Hána Jakub", "jakub.hana"])
+    print("Getting commits ...")
+    result = get_commits(r"C:\Users\jakub.hana\Source\Repos\Newton.N2", user_names=["Jakub Hana, Jakub Hána, Hána Jakub", "Hana Jakub", "jakub.hana"])
+    print(f"Got commits, count: {len(result)}")
     
-    print([item.repo for item in result])
+    file_path = Path(constants.OUTPUT_FILE_PATH)
+    # Create directory if not exists
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    print(f"Saving to file: '{file_path}'...")
+    with open(file_path, 'w') as file:
+        json.dump(result, file, indent=4)
+    print(f"Saved to file: '{file_path}'")
