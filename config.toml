@@ -1,0 +1,13 @@
+
+[app]
+output_path = 'output\output.json'
+repo_paths = [
+    'C:\Users\xxxmo\source\repos\restaurants-dashboard'
+]
+user_names = [
+    "Jakub Hana",
+    "Jakub Hána",
+    "Hána Jakub",
+    "Hana Jakub",
+    "jakub.hana"
+]
