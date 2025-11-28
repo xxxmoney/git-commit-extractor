@@ -1,2 +1,2 @@
 ﻿
-OUTPUT_FILE_PATH = f"output\output.json"
+OUTPUT_FILE_PATH = r"output\output.json"

@@ -5,7 +5,7 @@ import src.constants as constants
 
 if __name__ == '__main__':
     print("Getting commits ...")
-    result = get_commits(r"C:\Users\jakub.hana\Source\Repos\Newton.N2", user_names=["Jakub Hana, Jakub Hána, Hána Jakub", "Hana Jakub", "jakub.hana"])
+    result = get_commits(r"C:\Users\xxxmo\source\repos\restaurants-dashboard", user_names=["Jakub Hana, Jakub Hána, Hána Jakub", "Hana Jakub", "jakub.hana"])
     print(f"Got commits, count: {len(result)}")
     
     file_path = Path(constants.OUTPUT_FILE_PATH)
