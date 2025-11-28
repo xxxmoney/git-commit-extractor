@@ -1,6 +1,9 @@
 ﻿
-# Custom input data for project
-data/
+# Project output
+output/
+
+# Project config
+config.toml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
