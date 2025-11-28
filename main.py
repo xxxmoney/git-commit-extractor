@@ -1,24 +1,21 @@
 ﻿from pathlib import Path
-
-import jsonpickle
-
-from src.commit_extractor import get_commits
+import logging
 import src.constants as constants
+from src.commit_extractor import CommitExtractor
 
 if __name__ == '__main__':
-    print("Getting commits ...")
-    result = get_commits(r"C:\Users\xxxmo\source\repos\restaurants-dashboard", user_names=["Jakub Hana, Jakub Hána, Hána Jakub", "Hana Jakub", "jakub.hana"])
-    print(f"Got commits, count: {len(result)}")
-    
-    file_path = Path(constants.OUTPUT_FILE_PATH)
-    # Create directory if not exists
-    file_path.parent.mkdir(parents=True, exist_ok=True)
+    repos = [
+        r"C:\Users\xxxmo\source\repos\restaurants-dashboard"
+    ]
+    user_names = [
+        "Jakub Hana, "
+        "Jakub Hána, "
+        "Hána Jakub",
+        "Hana Jakub",
+        "jakub.hana"
+    ]
 
-    print(f"Serializing commit info...")
-    serialized = jsonpickle.encode(result, indent=4, unpicklable=False)
-    print(f"Serialized commit info")
+    commit_extractor = CommitExtractor(repos, user_names=user_names)
+    commit_extractor.load_commits()
 
-    print(f"Saving to file: '{file_path}'...")
-    with open(file_path, 'w') as file:
-        file.write(serialized)
-    print(f"Saved to file: '{file_path}'")
+    commit_extractor.save_commits(constants.OUTPUT_FILE_PATH)
