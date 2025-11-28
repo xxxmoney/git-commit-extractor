@@ -10,6 +10,7 @@
  - Create virtual environment: `python3 -m venv .venv`
  - Install poetry, see https://python-poetry.org/docs/basic-usage/
  - Install dependencies: `poetry install`
+ - Copy the template config file and **rename it** to `config.toml`
  - Run the main.py
 
 ## Configuration
