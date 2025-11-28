@@ -1,9 +1,12 @@
 
 [app]
+# Output path for coommits by repository
 output_path = 'output\output.json'
+# Repository directies, which should be searched for commits
 repo_paths = [
     'C:\Users\xxxmo\source\repos\restaurants-dashboard'
 ]
+# User names used to filter commits
 user_names = [
     "Jakub Hana",
     "Jakub Hána",
