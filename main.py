@@ -1,5 +1,7 @@
-﻿import json
-from pathlib import Path
+﻿from pathlib import Path
+
+import jsonpickle
+
 from src.commit_extractor import get_commits
 import src.constants as constants
 
@@ -12,7 +14,11 @@ if __name__ == '__main__':
     # Create directory if not exists
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
+    print(f"Serializing commit info...")
+    serialized = jsonpickle.encode(result, indent=4, unpicklable=False)
+    print(f"Serialized commit info")
+
     print(f"Saving to file: '{file_path}'...")
     with open(file_path, 'w') as file:
-        json.dump(result, file, indent=4)
+        file.write(serialized)
     print(f"Saved to file: '{file_path}'")

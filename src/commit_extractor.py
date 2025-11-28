@@ -1,7 +1,8 @@
-﻿from git import Repo, Commit, Stats
+﻿from git import Repo, Commit
 import delegator
+from src.commit_info import CommitInfo
 
-def get_commits(repo_path, branch = "master", user_names=None):
+def get_commits(repo_path, branch = "master", user_names=None) -> list[CommitInfo]:
     if user_names is None:
         user_names = [_get_current_git_user()]
         
@@ -12,7 +13,7 @@ def get_commits(repo_path, branch = "master", user_names=None):
         if commit.author.name in user_names:
             commits.append(commit)
         
-    return [{"author_name": commit.author.name, "date": commit.committed_date, "message": commit.message, "files": commit.stats.files} for commit in commits]
+    return [CommitInfo(commit) for commit in commits]
 
 def _get_current_git_user(): 
     result = delegator.run("git config user.name")
